@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P2-M11</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .activity {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .note {
+            background-color: #ffeb3b;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .nav-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-buttons button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            // Mostrar todas las actividades por defecto
+            var activities = document.getElementsByClassName('activity');
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            // Ajustes para la clase de 45 minutos
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            }
+            // Ajustes para la clase de 40 minutos
+            else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-3-step-5').style.display = 'none';
+                document.getElementById('activity-3-step-6').style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook-P2-M11</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+<!-- Actividad 0: Revisión de Misión -->
+<div id="activity-0" class="activity">
+    <div class="banner" onclick="toggleContent('revision_mision')">
+        <div class="title">📚 Actividad 0: Revisión de Misión ⏰ Tiempo: No especificado</div>
+        <div class="subtitle">Verificar que los dispositivos están conectados y el material está listo.</div>
+    </div>
+    <div id="revision_mision" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1:</strong> Verificar que los dispositivos están conectados, con acceso a internet, y CODE.org está abierto en el nivel correspondiente. También confirmar que los estudiantes tienen sus Magic Boards y cualquier otro material necesario.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> No se utiliza diálogo con los estudiantes en esta etapa.</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 1: Saludo y Ritual Gnius Club -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual_gnius')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Dar la bienvenida a los Genios y preparar el ambiente para el aprendizaje.</div>
+    </div>
+    <div id="saludo_ritual_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 con el logotipo de Gnius Club y saludar.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Hola, Genios! 🌟 Hoy vamos a embarcarnos en una misión de programación en Minecraft. ¿Están listos para crear y resolver desafíos increíbles? ¡Va a ser una aventura llena de diversión y aprendizaje!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 con poses para medir el estado de ánimo.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de comenzar, quiero saber cómo se sienten hoy. Si se sienten llenos de energía, levanten su pulgar. Si están un poco cansados o necesitan apoyo, pongan su pulgar abajo. ¡Recuerden que estamos aquí para ayudarnos!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 con la animación del ritual.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntamos nuestras manos y decimos: '¡Gracias por estar aquí, Genios! Hoy será un día lleno de programación divertida y desafíos creativos. ¡Vamos a aprender mucho juntos!'"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 con los objetivos de la misión.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos grandes objetivos: 1. Aprender los principios de programación con bloques usando CODE.org y Minecraft. 2. Trabajar en equipo para completar los desafíos y ayudar a nuestros compañeros. ¡Vamos a empezar esta increíble misión!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 2: Brain Vitamin -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('brain_vitamin')">
+        <div class="title">🧠 Actividad 2: Brain Vitamin ⏰ Tiempo: 1.5 minutos</div>
+        <div class="subtitle">Activar el cerebro con ejercicios previos a la programación.</div>
+    </div>
+    <div id="brain_vitamin" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Gimnasia Cerebral".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Genios! Antes de empezar con la programación, vamos a activar nuestros cerebros con un poco de gimnasia cerebral. ¡Estiren los brazos y prepárense para pensar como verdaderos programadores!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 con instrucciones de condicionales.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Ahora haremos un juego rápido de condicionales! Si digo 'Sol', levanten la mano derecha. Si digo 'Lluvia', levanten la mano izquierda. Vamos a hacerlo más rápido: Sol, Lluvia, Sol, Sol, Lluvia. ¡Esto es como usar condicionales en la programación de bloques!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 3: Challenge -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">💻 Actividad 3: Challenge ⏰ Tiempo: 30 minutos</div>
+        <div class="subtitle">Desarrollar los desafíos de programación en CODE.org.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 8: Portada del Challenge.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Genios! Ahora es su turno de programar individualmente. Van a trabajar en los desafíos de la Hora del Código en CODE.org. ¡Prepárense para superar retos increíbles!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 9: Explicación del reto de CODE.org.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En CODE.org, encontrarán diferentes misiones. Usarán bloques de código para mover personajes y resolver problemas de programación. ¡Trabajen con concentración y disfruten del reto!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (20 minutos):</strong> Proyectar Diapositiva 10: Temporizador de 20 minutos para desarrollar las misiones.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Tienen 20 minutos para completar sus misiones de programación en CODE.org. Trabajen a su propio ritmo y asegúrense de comprender bien cada bloque de código."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (5 minutos):</strong> Proyectar Diapositiva 11: Temporizador de 5 minutos para prueba y ajuste del código.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que han terminado sus misiones, prueben su código y ajusten cualquier error. ¡Es importante que su programa funcione perfectamente!"</td>
+            </tr>
+            <tr id="activity-3-step-5">
+                <td><strong>PASO 5 (2 minutos):</strong> Proyectar Diapositiva 12: Preguntas de reflexión sobre los desafíos.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Gran trabajo, genios! Reflexionemos: ¿Qué fue lo más difícil en este desafío? ¿Cómo lo resolvieron? ¿Qué harían de manera diferente?"</td>
+            </tr>
+            <tr id="activity-3-step-6">
+                <td><strong>PASO 6 (2 minutos):</strong> Proyectar Diapositiva 13: Revisión de los objetivos de la clase.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, revisemos nuestros objetivos: 1. ¿Logramos aplicar los principios básicos de programación en CODE.org? 2. ¿Logramos completar los desafíos de la Hora del Código de manera individual? ¡Estoy seguro de que lo hicieron genial!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 4: Team Gnius -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 4: Team Gnius ⏰ Tiempo: 12.5 minutos</div>
+        <div class="subtitle">Formar equipos para compartir experiencias y discutir los desafíos.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 14: Instrucción para formar equipos.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Genios! Ahora, reúnanse en equipos de 2 para compartir sus experiencias y discutir los desafíos que enfrentaron. ¡El trabajo en equipo nos hace mejores!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 15: Temporizador de 30 segundos para hacer equipos.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Tienen 30 segundos para hacer sus equipos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (4 minutos):</strong> Proyectar Diapositiva 16: Instrucción del método Think-Pair-Share.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a usar el método Think-Pair-Share. Primero, piensen en lo que aprendieron y en cómo lo aplicarán. Luego, compartan con su compañero."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (5 minutos):</strong> Proyectar Diapositiva 17: Metodología de trabajo colaborativo.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora trabajen juntos para aplicar lo que aprendieron, organizándose y proponiendo una solución en equipo. ¡Pongan en práctica su creatividad y habilidades de programación!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (2 minutos):</strong> Proyectar Diapositiva 18: Revisión final de la colaboración en equipo.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Finalmente, reflexionemos sobre cómo trabajamos en equipo: ¿Qué aprendimos sobre la importancia de colaborar y compartir ideas? ¿Cómo podríamos mejorar en futuras misiones?"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 5: Honor de Dojo -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🏅 Actividad 5: Honor de Dojo ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Revisión de los objetivos y cierre de la sesión.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 19: Revisión de los objetivos de la clase.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, revisemos nuestros objetivos: 1. ¿Logramos aplicar los principios básicos de programación en CODE.org? 2. ¿Trabajamos en equipo? ¡Estoy seguro de que lo hicieron genial!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Felicitar a los estudiantes por su participación y esfuerzo, sin destacar a individuos.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy, todos trabajaron increíblemente bien, colaboraron y programaron por primera vez. ¡Estoy muy orgulloso del esfuerzo y el compromiso de todo el equipo!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar la Diapositiva 20 "Honrar el Espacio". Dar instrucciones para recoger los materiales utilizados.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, vamos a honrar nuestro espacio de trabajo. Por favor, recojan todos los materiales y dejen el salón en orden. ¡Así demostramos respeto por nuestro entorno!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Cierre del container -->
+
+    <!-- Scripts adicionales si es necesario -->
+    <script>
+        // Agregar scripts adicionales aquí si es necesario
+    </script>
+
+    </body>
+    </html>
